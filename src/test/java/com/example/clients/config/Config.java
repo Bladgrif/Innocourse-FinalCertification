@@ -30,24 +30,24 @@ public class Config {
         return properties.getProperty("URL_EMPLOYEE");
     }
 
-    public static String getDBConnectionString() {
-        return properties.getProperty("db_connectionString");
+    public static String getDBConnection() {
+        return properties.getProperty("db_connection");
     }
 
-    public static String getDBLog() {
-        return properties.getProperty("db_log");
+    public static String getDBLogin() {
+        return properties.getProperty("db_login");
     }
 
-    public static String getDBPass() {
-        return properties.getProperty("db_pass");
+    public static String getDBPassword() {
+        return properties.getProperty("db_password");
     }
 
     public static String getAdminUsername() {
         return properties.getProperty("admin_username");
     }
 
-    public static String getAdminPass() {
-        return properties.getProperty("admin_pass");
+    public static String getAdminPassword() {
+        return properties.getProperty("admin_password");
     }
 
     public static String sqlInsertEmployee() {
@@ -68,5 +68,9 @@ public class Config {
 
     public static String sqlDeleteCompanyById() {
         return properties.getProperty("SQL_DELETE_COMPANY_BY_ID");
+    }
+
+    public static String sqlUpdateCompanyById() {
+        return properties.getProperty("SQL_UPDATE_ACTIVE_COMPANY_BY_ID");
     }
 }

@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 
 public class BaseTest {
 
-    protected static final User ADMIN = new User(Config.getAdminUsername(), Config.getAdminPass());
+    protected static final User ADMIN = new User(Config.getAdminUsername(), Config.getAdminPassword());
     public static String TOKEN;
 
     @BeforeAll
@@ -25,16 +25,15 @@ public class BaseTest {
 
 
         TOKEN = given()
-                .log().all()
                 .contentType(ContentType.JSON)
                 .body(ADMIN)
                 .when()
                 .post(getAuthUrl())
                 .then()
-                .log().all()
                 .statusCode(201)
                 .extract()
                 .path("userToken");
+        System.out.println(TOKEN);
 
         SelenideLogger.addListener("allure", new AllureSelenide()
                 .screenshots(true)

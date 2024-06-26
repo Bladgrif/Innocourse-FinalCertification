@@ -69,8 +69,4 @@ public class Config {
     public static String sqlDeleteCompanyById() {
         return properties.getProperty("SQL_DELETE_COMPANY_BY_ID");
     }
-
-    public static String getTelegramUrl() {
-        return properties.getProperty("tg_send_message");
-    }
 }

@@ -16,7 +16,6 @@ public class Config {
         }
     }
 
-
     public static String getAuthUrl() {
         return properties.getProperty("URL_AUTH");
     }

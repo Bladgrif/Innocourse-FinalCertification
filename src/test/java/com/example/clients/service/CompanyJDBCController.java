@@ -1,8 +1,5 @@
 package com.example.clients.service;
 
-import com.example.clients.config.Config;
-import com.example.clients.models.Company;
-
 import java.sql.*;
 
 import static com.example.clients.config.Config.*;
@@ -10,7 +7,7 @@ import static com.example.clients.config.Config.*;
 public class CompanyJDBCController {
 
 
-    public static void deleteCompanyById(int id) throws SQLException {
+    public void deleteCompanyById(int id) throws SQLException {
         Connection connection = DriverManager.getConnection(
                 getDBConnection(),
                 getDBLogin(),
@@ -22,7 +19,7 @@ public class CompanyJDBCController {
         connection.close();
     }
 
-    public static void deactivateCompanyById(int id) throws SQLException {
+    public void deactivateCompanyById(int id) throws SQLException {
 
         Connection connection = DriverManager.getConnection(
                 getDBConnection(),
@@ -35,7 +32,7 @@ public class CompanyJDBCController {
         connection.close();
     }
 
-    public static boolean getCompanyByIdDB(int id) throws SQLException {
+    public boolean getCompanyByIdDB(int id) throws SQLException {
 
         Connection connection = DriverManager.getConnection(
                 getDBConnection(),

@@ -5,7 +5,6 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import com.example.clients.config.Config;
 import com.example.clients.models.User;
 import io.qameta.allure.selenide.AllureSelenide;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeAll;
 

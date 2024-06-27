@@ -2,7 +2,6 @@ package com.example.clients.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class Config {
@@ -73,4 +72,9 @@ public class Config {
     public static String sqlUpdateCompanyById() {
         return properties.getProperty("SQL_UPDATE_ACTIVE_COMPANY_BY_ID");
     }
+
+    public static String sqlUpdateEmployeeById() {
+        return properties.getProperty("SQL_UPDATE_ACTIVE_EMPLOYEE_BY_ID");
+    }
+
 }

@@ -49,6 +49,8 @@ allure {
     aspectjweaver = true
 }
 
+
+
 test {
     useJUnitPlatform()
 }

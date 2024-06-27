@@ -50,7 +50,7 @@ public class Config {
     }
 
 
-    public static String sqlSelectById() {
+    public static String sqlSelectEmployeeById() {
         return properties.getProperty("SQL_SELECT_BY_ID");
     }
 
@@ -58,7 +58,7 @@ public class Config {
         return properties.getProperty("SQL_SELECT_COMPANY_BY_ID");
     }
 
-    public static String sqlDeleteById() {
+    public static String sqlDeleteEmployeeById() {
         return properties.getProperty("SQL_DELETE_BY_ID");
     }
 

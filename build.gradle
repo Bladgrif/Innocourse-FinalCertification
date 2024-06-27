@@ -53,9 +53,9 @@ test {
     useJUnitPlatform()
 }
 
-task DemoqaTest(type: Test) {
+task XClient(type: Test) {
     useJUnitPlatform {
-        includeTags 'Demoqa'
+        includeTags 'XClient'
     }
     testLogging {
         events "passed", "skipped", "failed"

@@ -7,19 +7,23 @@ import com.example.clients.service.CompanyJDBCController;
 import com.example.clients.service.EmployeeApiController;
 import com.example.clients.service.EmployeeJDBCController;
 import com.example.clients.util.BaseTest;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 import java.util.List;
 
+import static io.qameta.allure.Allure.step;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+@Epic("XClients Tests Selenide")
+@Feature("Service for making appointments with specialized specialists")
 public class XClientsTests extends BaseTest {
 
 //    Проблемы:
@@ -46,7 +50,13 @@ public class XClientsTests extends BaseTest {
     }
 
     @Test
+    @Tag("XClient")
+    @Story("Company Filter")
+    @Owner("Grigoriev Roman")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Этот тест проверяет, что список компаний фильтруется по параметру активные компании.")
     void CheckThatTheListOfCompaniesIsFilteredByParameterActive() throws SQLException {
+
         Response activeCompany = companyApiController.createCompany(true);
         assertEquals(activeCompany.getStatusCode(), 201);
         int activeCompanyId = activeCompany.jsonPath().getInt("id");
@@ -69,6 +79,11 @@ public class XClientsTests extends BaseTest {
     }
 
     @Test
+    @Tag("XClient")
+    @Story("Employee Creation")
+    @Owner("Grigoriev Roman")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Этот тест проверяет создание сотрудника в несуществующей компании.")
     void CheckTheCreationOfAnEmployeeInANonExistentCompany() {
         Response employee = employeeApiController.createEmployee(0);
         assertEquals(employee.getStatusCode(), 500);
@@ -77,6 +92,11 @@ public class XClientsTests extends BaseTest {
     }
 
     @Test
+    @Tag("XClient")
+    @Story("Employee List")
+    @Owner("Grigoriev Roman")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Этот тест проверяет, что неактивный сотрудник не отображается в списке сотрудников.")
     void CheckThatAnInactiveEmployeeIsNotShownInTheList() throws SQLException {
         Response company = companyApiController.createCompany();
         assertEquals(company.getStatusCode(), 201);
@@ -100,6 +120,11 @@ public class XClientsTests extends BaseTest {
     }
 
     @Test
+    @Tag("XClient")
+    @Story("Company Deletion")
+    @Owner("Grigoriev Roman")
+    @Severity(SeverityLevel.CRITICAL)
+    @Description("Этот тест проверяет, что поле deletedAt у удаленной компании имеет значение null в базе данных.")
     void CheckThatTheDeletedCompanyHasTheDeletedAtFieldInTheDatabase() throws SQLException {
         Response company = companyApiController.createCompany();
         assertEquals(company.getStatusCode(), 201);

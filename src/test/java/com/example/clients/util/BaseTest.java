@@ -32,7 +32,6 @@ public class BaseTest {
                 .statusCode(201)
                 .extract()
                 .path("userToken");
-        System.out.println(TOKEN);
 
         SelenideLogger.addListener("allure", new AllureSelenide()
                 .screenshots(true)

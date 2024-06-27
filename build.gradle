@@ -53,11 +53,10 @@ test {
     useJUnitPlatform()
 }
 
-task XClient(type: Test) {
-    useJUnitPlatform {
-        includeTags 'XClient'
-    }
+test {
+    useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
     }
+    systemProperty 'junit.jupiter.tags', 'XClient'
 }

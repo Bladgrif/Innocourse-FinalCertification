@@ -49,9 +49,6 @@ public class Config {
         return properties.getProperty("admin_password");
     }
 
-    public static String sqlInsertEmployee() {
-        return properties.getProperty("SQL_INSERT_EMPLOYEE");
-    }
 
     public static String sqlSelectById() {
         return properties.getProperty("SQL_SELECT_BY_ID");

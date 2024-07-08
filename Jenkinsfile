@@ -45,4 +45,14 @@ pipeline {
         success {
             mail to: 'you@example.com',
                  subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: "Job '${env.JOB_NAME} [
+                 body: """Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' was successful.
+                 Check it out here: ${env.BUILD_URL}"""
+        }
+        failure {
+            mail to: 'you@example.com',
+                 subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                 body: """Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' failed.
+                 Check it out here: ${env.BUILD_URL}"""
+        }
+    }
+}

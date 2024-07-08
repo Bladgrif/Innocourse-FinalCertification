@@ -22,7 +22,6 @@ public class CompanyApiController {
         return given()
                 .when()
                 .get(Config.getCompanyUrl() + activeStatus);
-
     }
 
     public Response createCompany() {

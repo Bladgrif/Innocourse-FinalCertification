@@ -6,11 +6,11 @@ pipeline {
         gradle 'gradle jenkins'
     }
 
-    environment {
-        // Установите переменные окружения, если нужно
-        ALLURE_RESULTS = 'build/allure-results'
-        ALLURE_REPORT = 'build/allure-report'
-    }
+//     environment {
+//         // Установите переменные окружения, если нужно
+//         ALLURE_RESULTS = 'build/allure-results'
+//         ALLURE_REPORT = 'build/allure-report'
+//     }
 
     stages {
         stage('Checkout') {
@@ -43,7 +43,7 @@ pipeline {
         stage('Allure Report') {
             steps {
                 // Генерация Allure отчета
-                allure includeProperties: false, jdk: '', results: [[path: env.ALLURE_RESULTS]]
+                allure includeProperties: false, results: [[path: 'build/allure-results']]
             }
         }
 

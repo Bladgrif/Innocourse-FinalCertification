@@ -56,11 +56,8 @@ pipeline {
 
     post {
         always {
-            // Архивируйте артефакты
-            archiveArtifacts artifacts: '**/build/libs/*.jar', allowEmptyArchive: true
-
-            // Опубликуйте Allure отчет
-            allure includeProperties: false, jdk: '', results: [[path: env.ALLURE_RESULTS]]
+            archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
+            allure includeProperties: false, results: [[path: 'build/allure-results']]
         }
 //         failure {
 //             // Отправьте уведомление при сбое (например, по электронной почте)

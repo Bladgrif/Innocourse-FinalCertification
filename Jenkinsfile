@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Укажите версию Gradle, которая установлена на Jenkins-агенте
-        gradle 'Gradle_7.5.1'
+        gradle 'Gradle 7.5.1'
     }
 
     environment {

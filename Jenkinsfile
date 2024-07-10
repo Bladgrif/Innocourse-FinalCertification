@@ -71,5 +71,4 @@ pipeline {
 //                  subject: "Build ${env.BUILD_NUMBER} Failed",
 //                  body: "Build ${env.BUILD_NUMBER} has failed. Please check the Jenkins console for details."
 //         }
-    }
 }

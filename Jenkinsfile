@@ -46,6 +46,12 @@ pipeline {
                 allure includeProperties: false, jdk: '', results: [[path: env.ALLURE_RESULTS]]
             }
         }
+
+        stage('Check Allure Results') {
+            steps {
+                sh 'ls -la build/allure-results'
+            }
+        }
     }
 
     post {

@@ -54,16 +54,16 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
-            allure includeProperties: false, results: [[path: 'build/allure-results']]
-        }
-        failure {
-            // Отправьте уведомление при сбое (например, по электронной почте)
-            mail to: 'almazran@mail.ru',
-                 subject: "Build ${env.BUILD_NUMBER} Failed",
-                 body: "Build ${env.BUILD_NUMBER} has failed. Please check the Jenkins console for details."
-        }
-    }
+//     post {
+//         always {
+//             archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
+//             allure includeProperties: false, results: [[path: 'build/allure-results']]
+//         }
+//         failure {
+//             // Отправьте уведомление при сбое (например, по электронной почте)
+//             mail to: 'almazran@mail.ru',
+//                  subject: "Build ${env.BUILD_NUMBER} Failed",
+//                  body: "Build ${env.BUILD_NUMBER} has failed. Please check the Jenkins console for details."
+//         }
+//     }
 }

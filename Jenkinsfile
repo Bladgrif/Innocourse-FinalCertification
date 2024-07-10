@@ -1,58 +1,60 @@
 pipeline {
     agent any
+
+    tools {
+        // Укажите версию Gradle, которая установлена на Jenkins-агенте
+        gradle 'Gradle_7.5.1'
+    }
+
+    environment {
+        // Установите переменные окружения, если нужно
+        ALLURE_RESULTS = 'build/allure-results'
+        ALLURE_REPORT = 'build/allure-report'
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Bladgrif/Innocourse-FinalCertification'
+                // Склонируйте репозиторий
+                git url: 'https://github.com/Bladgrif/Innocourse-FinalCertification'
             }
         }
+
         stage('Build') {
             steps {
-                script {
-                    sh './gradlew clean build'
-                }
+                // Соберите проект
+                sh './gradlew clean build'
             }
         }
+
         stage('Test') {
             steps {
-                script {
-                    sh './gradlew test'
-                }
+                // Запустите тесты
+                sh './gradlew test'
             }
         }
+
         stage('Allure Report') {
             steps {
-                script {
-                    allure([
-                        includeProperties: false,
-                        jdk: '',
-                        results: [[path: 'build/allure-results']]
-                    ])
-                }
+                // Генерация Allure отчета
+                allure includeProperties: false, jdk: '', results: [[path: env.ALLURE_RESULTS]]
             }
         }
     }
+
     post {
         always {
-            junit '**/build/test-results/test/*.xml'
+            // Архивируйте артефакты
             archiveArtifacts artifacts: '**/build/libs/*.jar', allowEmptyArchive: true
-            allure([
-                includeProperties: false,
-                jdk: '',
-                results: [[path: 'build/allure-results']]
-            ])
-        }
-        success {
-            mail to: 'you@example.com',
-                 subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: """Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' was successful.
-                 Check it out here: ${env.BUILD_URL}"""
+
+            // Опубликуйте Allure отчет
+            allure includeProperties: false, jdk: '', results: [[path: env.ALLURE_RESULTS]]
         }
         failure {
-            mail to: 'you@example.com',
-                 subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                 body: """Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' failed.
-                 Check it out here: ${env.BUILD_URL}"""
+            // Отправьте уведомление при сбое (например, по электронной почте)
+            mail to: 'almazran@mail.ru',
+                 subject: "Build ${env.BUILD_NUMBER} Failed",
+                 body: "Build ${env.BUILD_NUMBER} has failed. Please check the Jenkins console for details."
         }
     }
 }

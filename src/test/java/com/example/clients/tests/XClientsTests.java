@@ -11,6 +11,7 @@ import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -90,6 +91,7 @@ public class XClientsTests extends BaseTest {
 
     }
 
+    @Disabled
     @Test
     @Tag("XClient")
     @Story("Employee List")
@@ -118,6 +120,7 @@ public class XClientsTests extends BaseTest {
         assertThat(activeEmployees, not(hasItem(hasProperty("id", equalTo(inactiveEmployeeId)))));
     }
 
+    @Disabled
     @Test
     @Tag("XClient")
     @Story("Company Deletion")

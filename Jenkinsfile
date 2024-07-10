@@ -6,11 +6,11 @@ pipeline {
         gradle 'gradle jenkins'
     }
 
-//     environment {
-//         // Установите переменные окружения, если нужно
-//         ALLURE_RESULTS = 'build/allure-results'
-//         ALLURE_REPORT = 'build/allure-report'
-//     }
+    environment {
+        // Установите переменные окружения, если нужно
+        ALLURE_RESULTS = 'build/allure-results'
+        ALLURE_REPORT = 'build/allure-report'
+    }
 
     stages {
         stage('Checkout') {
@@ -60,15 +60,4 @@ pipeline {
         }
     }
 
-//     post {
-//         always {
-//             archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
-//             allure includeProperties: false, results: [[path: 'build/allure-results']]
-//         }
-//         failure {
-//             // Отправьте уведомление при сбое (например, по электронной почте)
-//             mail to: 'almazran@mail.ru',
-//                  subject: "Build ${env.BUILD_NUMBER} Failed",
-//                  body: "Build ${env.BUILD_NUMBER} has failed. Please check the Jenkins console for details."
-//         }
 }

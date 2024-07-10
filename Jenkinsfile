@@ -62,11 +62,11 @@ pipeline {
             // Опубликуйте Allure отчет
             allure includeProperties: false, jdk: '', results: [[path: env.ALLURE_RESULTS]]
         }
-        failure {
-            // Отправьте уведомление при сбое (например, по электронной почте)
-            mail to: 'almazran@mail.ru',
-                 subject: "Build ${env.BUILD_NUMBER} Failed",
-                 body: "Build ${env.BUILD_NUMBER} has failed. Please check the Jenkins console for details."
-        }
+//         failure {
+//             // Отправьте уведомление при сбое (например, по электронной почте)
+//             mail to: 'almazran@mail.ru',
+//                  subject: "Build ${env.BUILD_NUMBER} Failed",
+//                  body: "Build ${env.BUILD_NUMBER} has failed. Please check the Jenkins console for details."
+//         }
     }
 }

@@ -52,12 +52,6 @@ pipeline {
                 sh 'ls -la build/allure-results'
             }
         }
-
-        stage('Check Allure Results') {
-            steps {
-                sh 'ls -la ${ALLURE_RESULTS}'
-            }
-        }
     }
 
     post {

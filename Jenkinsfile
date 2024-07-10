@@ -52,13 +52,19 @@ pipeline {
                 sh 'ls -la build/allure-results'
             }
         }
+
+        stage('Check Allure Results') {
+            steps {
+                sh 'ls -la ${ALLURE_RESULTS}'
+            }
+        }
     }
 
-    post {
-        always {
-            archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
-            allure includeProperties: false, results: [[path: 'build/allure-results']]
-        }
+//     post {
+//         always {
+//             archiveArtifacts artifacts: 'build/libs/*.jar', allowEmptyArchive: true
+//             allure includeProperties: false, results: [[path: 'build/allure-results']]
+//         }
 //         failure {
 //             // Отправьте уведомление при сбое (например, по электронной почте)
 //             mail to: 'almazran@mail.ru',

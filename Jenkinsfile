@@ -20,6 +20,12 @@ pipeline {
             }
         }
 
+        stage('Set Executable Permissions') {
+            steps {
+                sh 'chmod +x ./gradlew'
+            }
+        }
+
         stage('Build') {
             steps {
                 // Соберите проект
